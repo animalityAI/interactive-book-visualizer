@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Book Visualizer - Demo</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Demo() {
+            const [text, setText] = React.useState('');
+            const [images, setImages] = React.useState([]);
+            
+            const generateImages = () => {
+                // Demo version - generate placeholder images
+                const demoImages = text.split('.')
+                    .filter(sentence => sentence.trim().length > 20)
+                    .map((sentence, index) => ({
+                        text: sentence.trim(),
+                        imageUrl: `https://picsum.photos/seed/${index}/400/300`,
+                        timestamp: new Date().toISOString()
+                    }));
+                setImages(demoImages);
+            };
+            
+            return (
+                <div className="max-w-4xl mx-auto p-4">
+                    <div className="mb-8 text-center">
+                        <h1 className="text-3xl font-bold mb-2">Interactive Book Visualizer</h1>
+                        <p className="text-gray-600">Enter text to generate visual scenes</p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                        <textarea
+                            className="w-full h-32 p-4 border rounded shadow-sm"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            placeholder="Enter your story text here..."
+                        />
+                        
+                        <button
+                            className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            onClick={generateImages}
+                            disabled={!text.trim()}
+                        >
+                            Generate Images
+                        </button>
+                        
+                        {images.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                                {images.map((image, index) => (
+                                    <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
+                                        <img
+                                            src={image.imageUrl}
+                                            alt={`Generated scene ${index + 1}`}
+                                            className="w-full h-48 object-cover"
+                                        />
+                                        <div className="p-4">
+                                            <p className="text-sm text-gray-700">{image.text}</p>
+                                            <p className="text-xs text-gray-500 mt-2">
+                                                Generated: {new Date(image.timestamp).toLocaleString()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+        
+        ReactDOM.render(<Demo />, document.getElementById('root'));
+    </script>
+</body>
+</html>
