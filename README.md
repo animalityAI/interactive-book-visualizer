@@ -13,35 +13,35 @@ An AI-powered tool that transforms text into dynamic visual stories, making read
 ## 🛠️ Quick Start
 
 1. Clone the repository:
-```bash
+\`\`\`bash
 git clone https://github.com/animalityAI/interactive-book-visualizer.git
 cd interactive-book-visualizer
-```
+\`\`\`
 
 2. Install dependencies:
-```bash
+\`\`\`bash
 pip install -r requirements.txt
 npm install
-```
+\`\`\`
 
 3. Set up your environment variables:
-```bash
+\`\`\`bash
 cp .env.example .env
 # Edit .env with your API keys
-```
+\`\`\`
 
 4. Run the services:
-```bash
+\`\`\`bash
 # Backend
 uvicorn app.main:app --reload --port 8000
 
 # Frontend
 npm run dev
-```
+\`\`\`
 
 ## 📦 Structure
 
-```
+\`\`\`
 interactive-book-visualizer/
 ├── backend/
 │   ├── app/
@@ -55,7 +55,7 @@ interactive-book-visualizer/
 │   │   └── pages/           # Page components
 │   └── package.json
 └── README.md
-```
+\`\`\`
 
 ## 🔧 Technologies
 
