@@ -1,73 +1,39 @@
 # Interactive Book Visualizer
 
-An AI-powered tool that transforms text into dynamic visual stories, making reading more engaging and interactive.
+An AI-powered tool that generates images from book text in real-time, creating an interactive visual reading experience.
 
-## 🚀 Features
+## Features
 
 - Real-time text-to-image generation
-- Support for multiple languages (English/Spanish)
+- Support for multiple languages
 - Comic-style layout generation
-- Dynamic image variations for repeated readings
-- Caching system for improved performance
+- Dynamic image variations
 
-## 🛠️ Quick Start
+## Quick Start
 
-1. Clone the repository:
-\`\`\`bash
+```bash
+# Clone the repository
 git clone https://github.com/animalityAI/interactive-book-visualizer.git
-cd interactive-book-visualizer
-\`\`\`
 
-2. Install dependencies:
-\`\`\`bash
+# Install backend dependencies
+cd backend
 pip install -r requirements.txt
+
+# Run backend
+uvicorn main:app --reload
+
+# Install frontend dependencies
+cd ../frontend
 npm install
-\`\`\`
 
-3. Set up your environment variables:
-\`\`\`bash
-cp .env.example .env
-# Edit .env with your API keys
-\`\`\`
-
-4. Run the services:
-\`\`\`bash
-# Backend
-uvicorn app.main:app --reload --port 8000
-
-# Frontend
+# Run frontend
 npm run dev
-\`\`\`
+```
 
-## 📦 Structure
+## Demo
 
-\`\`\`
-interactive-book-visualizer/
-├── backend/
-│   ├── app/
-│   │   ├── main.py           # FastAPI application
-│   │   ├── image_gen.py      # Image generation service
-│   │   └── text_process.py   # Text processing service
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/       # React components
-│   │   └── pages/           # Page components
-│   └── package.json
-└── README.md
-\`\`\`
+Visit our [live demo](https://animalityai.github.io/interactive-book-visualizer/) to try it out!
 
-## 🔧 Technologies
-
-- Frontend: React, TailwindCSS
-- Backend: FastAPI, Python
-- Image Generation: Stable Diffusion API
-- Text Processing: NLTK, Transformers
-
-## 📝 License
+## License
 
 MIT
-
-## 🤝 Contributing
-
-Contributions welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) first.
